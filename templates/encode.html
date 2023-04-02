@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+
+{%block content%}
+
+<div class="container">
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            {% for message in messages %}
+                <div class="alert alert-danger" align="center">
+                    <h6>{{ message }}</h6>
+                </div>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+    <div class="alert alert-secondary" role="alert">
+        <b>วิธีการใช้งาน</b><br>
+        <ul>
+            <li>ในการเข้ารหัสผ่านให้นำ Mac Address หรือ Serial Number แต่ต้องไม่ซ้ำกัน <b class="text-danger">( มีผลกับการถอดรหัสในอนาคต )</b></li>
+        </ul>
+    </div>
+    <div class="card">
+        <div class="card-header">เข้ารหัสผ่าน</div>
+        <div class="card-body">
+            <form action="{{url_for('encode_action')}}" method="POST" autocomplete="off">
+                <b class="text-danger">* </b><label for="">Mac Address</label>
+                <input type="text" name="mac" class="form-control" placeholder="กรุณาระบุ Mac Address" required>
+                <b class="text-danger">* </b><label for="">ชื่ออุปกรณ์</label>
+                <input type="text" name="device_name" class="form-control" placeholder="กรุณาระบุชื่ออุปกรณ์" required>
+                <label for="">ลูกค้า</label>
+                <input list="customer_list" name="customer" class="form-control" placeholder="กรุณาระบุชื่อลูกค้า (ไม่ระบุก็ได้)">
+                <label for="">ชื่อกล้อง</label>
+                <input list="customer_list" name="camaraname" class="form-control" placeholder="กรุณาระบุชื่อกล้อง (ไม่ระบุก็ได้)">
+                <datalist id="customer_list">
+                    {% for cus_list in data2 %}
+                        <option value="{{cus_list[5]}}">{{cus_list[5]}}</option>
+                    {% endfor %}
+                </datalist>
+                <label for="">สาขา</label>
+                <input list="site_list" name="site" class="form-control" placeholder="กรุณาระบุชื่อสาขา (ไม่ระบุก็ได้)">
+                <datalist id="site_list">
+                    {% for cus_list in data2 %}
+                        <option value="{{cus_list[6]}}">{{cus_list[6]}}</option>
+                    {% endfor %}
+                </datalist><br>
+                <input type="submit" value="Generate" class="btn btn-success">
+                <a href="/encode" class="btn btn-warning">Reload</a>
+                <a href="/" class="btn btn-secondary">Return to home</a>
+            </form>
+        </div>
+    </div>
+    <br>
+    {% if data: %}
+        <div class="card" align="center" style="background-color: #2C3E50;">
+            <div class="card-body">
+                <h1>
+                    <code class="text-white">
+                        {{data}}
+                    </code>
+                </h1>
+            </div>
+        </div>
+    {% endif %}
+</div>
+
+{% endblock %}

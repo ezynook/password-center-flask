@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/bootstrap.min.css">
+    <link rel="stylesheet" href="../static/style.css">
+    <script src="../static/bootstrap.bundle.min.js"></script>
+    <script src="../static/jquery.slim.min.js"></script>
+    <link rel="stylesheet" href="../static/dataTables.bootstrap4.min.css">
+    <script src="../static/jquery.dataTables.min.js"></script>
+    <script src="../static/dataTables.bootstrap4.min.js"></script>
+    <link rel="stylesheet" href="../static/w3.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai&display=swap" rel="stylesheet">
+    <title>Password Generate</title>
+    <style>
+        * {
+            font-family: 'Noto Sans Thai', sans-serif;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="/">Password Generate</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="{% if request.endpoint == 'index' %}nav-item active{%endif %}">
+                    <a class="nav-link" href="/">ค้นหา</a>
+                </li>
+                <li class="{% if request.endpoint == 'encode' %}nav-item active{%endif %}">
+                    <a class="nav-link" href="/encode">เข้ารหัส</a>
+                </li>
+                <li class="{% if request.endpoint == 'decode' %}nav-item active{%endif %}">
+                    <a class="nav-link" href="/decode">ถอดรหัส</a>
+                </li>
+                <li class="{% if request.endpoint == 'setting' %}nav-item active{%endif %}">
+                    <a class="nav-link" href="/setting">ตั้งค่า</a>
+                </li>
+                <li>
+                    <a href="#" onclick="document.getElementById('id01').style.display='block'" class="nav-link">เกี่ยวกับ</a>
+                </li>
+                <li>
+                    <a class="nav-link" href="/backup">แบ็คอัพฐานข้อมูล</a>
+                </li>
+            </ul>
+            <form class="form-inline my-2 my-lg-0">
+                <b class="text-white">v.1.0</b>
+            </form>
+        </div>
+    </nav>
+    <div id="id01" class="w3-modal w3-animate-opacity">
+        <div class="w3-modal-content w3-card-4">
+          <header class="w3-container w3-teal"> 
+            <span onclick="document.getElementById('id01').style.display='none'" 
+            class="w3-button w3-large w3-display-topright">&times;</span>
+            <h2>ระบบจัดการรหัสผ่าน (Password Management System)</h2>
+          </header>
+          <div class="w3-container mt-3">
+            <p>Password Generator Management System For | DIGITAL ASSOCIATES CO., LTD.</p>
+            <p>Version 1.0 Last build: 2023-03-22</p>
+            <p>
+                Development details:
+                <ul>
+                    <li>Author: Nutthakorn P. | Engineer Network Technicial (TC)</li>
+                    <li>Python (Flask Framework)</li>
+                    <li>Pandas Metastore</li>
+                </ul>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container mt-2">
+        <main class="mt-2 container">
+            {%block content%}
+
+            {% endblock %}
+        </main>
+    </div>
+</body>
+
+</html>

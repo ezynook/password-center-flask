@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{%block content%}
+<div class="container">
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            {% for message in messages %}
+                <div class="alert alert-success" align="center">
+                    <h6>{{ message }}</h6>
+                </div>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+    <div class="card">
+        <div class="card-header">ตั้งค่าจำนวนการเข้ารหัสผ่าน</div>
+        <div class="card-body">
+            <form action="{{url_for('save_setting')}}" method="POST">
+                <input type="number" name="length" class="form-control" placeholder="จำนวนที่ต้องออกรหัสผ่าน (แนะนำ 8 หลัก)" value="{{data}}" required>
+                <b class="text-danger mt-2 mb-2">** จำนวนที่ออกรหัสผ่าน 8 หลัก รวมกับอักษรพิเศษใช้งานจริงแล้วรวม 10 หลัก</b><br>
+                <input type="submit" value="Save Setting" class="btn btn-success">
+                <a href="/" class="btn btn-secondary">Return to home</a>
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

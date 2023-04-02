@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+
+{%block content%}
+<div class="container">
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            {% for message in messages %}
+                <div class="alert alert-danger" align="center">
+                    <h6>{{ message }}</h6>
+                </div>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+    <div class="alert alert-secondary" role="alert">
+        <b>วิธีการใช้งาน</b><br>
+        <ul>
+            <li>การถอดรหัสให้นำช่อง Decompress ในหน้าค้นหามาใช้ถอดรหัสผ่าน</li>
+        </ul>
+    </div>
+    <div class="card">
+        <div class="card-header">ออกรหัสผ่าน</div>
+        <div class="card-body">
+            <form action="{{url_for('decode_action')}}" method="POST">
+                <label for="">รหัสผ่าน</label>
+                <input type="text" name="passwd" class="form-control" placeholder="กรุณาระบุรหัสผ่าน" required><br>
+                <input type="submit" value="Decompress" class="btn btn-success">
+                <a href="/decode" class="btn btn-warning">Reload</a>
+                <a href="/" class="btn btn-secondary">Return to home</a>
+            </form>
+        </div>
+    </div>
+    <br>
+    {% if data: %}
+        <div class="card" align="center" style="background-color: #2C3E50;">
+            <div class="card-body">
+                <h1>
+                    <code class="text-white">
+                        {{data}}
+                    </code>
+                </h1>
+            </div>
+        </div>
+    {% endif %}
+</div>
+
+{% endblock %}
