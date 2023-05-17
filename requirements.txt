@@ -1,0 +1,6 @@
+flask
+db-sqlite3
+pandas
+sqlalchemy
+configparser
+openpyxl

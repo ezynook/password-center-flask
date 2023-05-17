@@ -1,0 +1,12 @@
+version: '3'
+
+services:
+
+  genpass:
+    build: .
+    container_name: genpass
+    restart: always
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./src/:/usr/src/app

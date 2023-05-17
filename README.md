@@ -32,7 +32,7 @@
 > ### Download ตัวโปรเจ็ค
 
 ```bash
-git clone https://github.com/ezynook/Password-Manager.git
+git clone https://github.com/ezynook/password-center-flask.git
 ```
 
 > ### เปลี่ยนชื่อ Directory
@@ -71,6 +71,11 @@ PORT = 9000 #เปลี่ยน Port ได้ตามต้องการ
 ```bash
 python app.py
 ```
+> ### ติดตั้งบน Docker
+```bash
+cd genpassword
+docker-compose up -d --build
+```
 > ### หาก Run ผ่านจะขึ้นประมาณนี้
 ```bash
 * Serving Flask app 'app'
@@ -89,19 +94,19 @@ http://your_ip_address:port/
 ```
 ---
 > ### ตัวอย่างหน้าจอค้นหารหัสผ่าน
-<img src="snapshot/search.png" width="800">
+<img src="src/snapshot/search.png" width="800">
 
 > ### ตัวอย่างหน้าจอเข้ารหัสผ่าน
-<img src="snapshot/encode.png" width="800">
+<img src="src/snapshot/encode.png" width="800">
 
 > ### ตัวอย่างหน้าจอถอดรหัสผ่าน
-<img src="snapshot/decode.png" width="800">
+<img src="src/snapshot/decode.png" width="800">
 
 > ### ตัวอย่างหน้าจอการตั้งค่าจำนวนรหัสผ่านที่ต้องการ
-<img src="snapshot/config.png" width="800">
+<img src="src/snapshot/config.png" width="800">
 
 > ### ตัวอย่างหน้าจอรายละเอียดโปรแกรม
-<img src="snapshot/about.png" width="800">
+<img src="src/snapshot/about.png" width="800">
 
 ---
 

@@ -145,7 +145,7 @@ def backup():
                 config
     """, con=conn)
 
-    with pd.ExcelWriter(f"./backup_db_{getToday()[1]}.xlsx") as writer:
+    with pd.ExcelWriter(f"backup_db_{getToday()[1]}.xlsx") as writer:
         tb_pass.to_excel(writer, sheet_name="รายการรหัสผ่าน", index=False)
         tb_config.to_excel(writer, sheet_name="ตั้งค่า", index=False)
 
